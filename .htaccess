@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+<IfModule mod_php8.c>
+    php_value max_input_vars 1800
+    php_value max_input_time 1800
+    php_value max_execution_time 1800
+</IfModule>
