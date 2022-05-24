@@ -2,17 +2,19 @@ import React, {useState} from 'react';
 import Authenticated from '@/Layouts/Authenticated';
 import Button from '@/Components/Button';
 import { Head, Link } from '@inertiajs/inertia-react';
+import ReactDiffViewer from 'react-diff-viewer';
+import stringSimilarity from 'string-similarity';
 
 //const speech = require('@google-cloud/speech');
 //const client = new speech.SpeechClient();
 
 export default function Index(props) {
-	const { mockData } = props;
+	const { mockData, mockTest } = props;
 
-	
+	let newValue = mockData?.audio_to_text;
+    let oldValue = mockTest?.desc;
 
-	//console.log(client)
-
+    let rating = stringSimilarity.compareTwoStrings(oldValue, newValue);
 
     return (
         <Authenticated
@@ -40,8 +42,11 @@ export default function Index(props) {
 
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
 
-                    	{mockData?.audio_to_text}
+                        <h3>Overall Rating: {(rating*100).toFixed()}%</h3>
 
+                        {(oldValue && newValue) &&
+                            <ReactDiffViewer oldValue={oldValue} newValue={newValue} splitView={true} />
+                        }
 					</div>
                 </div>
             </div>
