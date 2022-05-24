@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class MockTest extends Model
 {
     use HasFactory;
+
+    protected $appends = [
+        'desc'
+    ];
+
+    public function getDescAttribute(){
+        return strip_tags($this->description);
+    }
+
 }

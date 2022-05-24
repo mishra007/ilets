@@ -36,11 +36,14 @@ class ResultController extends Controller
 	//
 	public function show(Request $request, MockResults $mock){
 		//...
-		if($mock->users_id !== auth()->user()->id){
+		if(auth()->user()->role=='user' && $mock->users_id !== auth()->user()->id){
 			abort(404);
 		}
 
-		return Inertia::render('Result/Show', ['mockData'=>$mock]);
+		$mockTest = $mock->mock;
+
+		//dd($mock);
+		return Inertia::render('Result/Show', ['mockData'=>$mock, 'mockTest'=>$mockTest]);
 	}
 
 

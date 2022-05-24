@@ -21,6 +21,7 @@ class MockResults extends Model
         return env('APP_URL').'/uploads/audio/'.$this->audio;
     }
 
+
     public function mock()
     {
         return $this->belongsTo(MockTest::class, 'mock_tests_id');
