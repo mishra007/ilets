@@ -61,7 +61,7 @@ export default function Index(props) {
 										<td className="px-6 py-4 whitespace-nowrap">{data.status}</td>
 										<td className="px-6 py-4 whitespace-nowrap">
 											<Link href={route('mock.test', data.slug)}>
-												<Button className="mr-4">Take Test</Button>
+												<Button className="mr-4">Begin the Assessment</Button>
 											</Link>
 
 										</td>

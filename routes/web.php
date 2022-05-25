@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\Admin\MockController;
+use App\Http\Controllers\Admin\StudentsController;
 
 use App\Http\Controllers\User\MockController as UserMockController;
 
@@ -70,6 +71,13 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::post('/mock/store', 'store')->name('mock.store');
         Route::get('/mock/{mock}/edit', 'edit')->name('mock.edit');
         Route::post('/mock/destroy', 'destroy')->name('mock.destroy');
+        
+    });
+
+    Route::controller(StudentsController::class)->prefix('admin')->middleware('isAdmin')->group(function () {
+        Route::get('/students', 'index')->name('students.index');
+        Route::get('/students/{student}', 'show')->name('students.show');
+        Route::post('/students/destroy', 'destroy')->name('students.destroy');
         
     });
 

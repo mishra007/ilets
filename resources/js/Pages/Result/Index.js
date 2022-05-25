@@ -3,9 +3,10 @@ import Authenticated from '@/Layouts/Authenticated';
 import Button from '@/Components/Button';
 import Pagination from '@/Components/Pagination';
 import { Head, Link } from '@inertiajs/inertia-react';
+import Moment from 'moment';
 
 export default function Index(props) {
-	const { mockresults } = props;
+	const { mockresults, auth } = props;
 
     return (
         <Authenticated
@@ -24,7 +25,11 @@ export default function Index(props) {
                     	<table className="min-w-full divide-y divide-gray-200">
 							<thead className="bg-gray-50">
 								<tr>
+									{auth.user.role==='admin' &&
+									<th className="group px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User</th>
+									}
 									<th className="group px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+									<th className="group px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
 									<th className="group px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
 									<th className="group px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
 								</tr>
@@ -34,11 +39,15 @@ export default function Index(props) {
 								{mockresults?.data.length>0 && mockresults.data.map((data, key) => {
 								return(
 									<tr key={key}>
+										{auth.user.role==='admin' &&
+										<td className="px-6 py-4 whitespace-nowrap">{data?.user?.name}</td>
+										}
 										<td className="px-6 py-4 whitespace-nowrap">{data?.mock?.title}</td>
+										<td className="px-6 py-4 whitespace-nowrap">{Moment(data.created_at).format('LLL')}</td>
 										<td className="px-6 py-4 whitespace-nowrap">{data?.status_name}</td>
 										<td className="px-6 py-4 whitespace-nowrap">
 											<Link href={route('result.show', [data.id, data?.mock?.slug])}>
-												<Button className="mr-4">View Details</Button>
+												<Button className="mr-4">View Result</Button>
 											</Link>
 										</td>
 									</tr>

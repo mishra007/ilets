@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('audio');
             $table->string('audio_gcs')->nullable();
             $table->text('audio_to_text')->nullable();
+            $table->integer('timer')->nullable();
+            $table->integer('pause_count')->nullable();
 
             $table->enum('status', ['pending', 'progress', 'comparison', 'completed'])->default('pending');
 

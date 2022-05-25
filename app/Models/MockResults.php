@@ -27,4 +27,9 @@ class MockResults extends Model
         return $this->belongsTo(MockTest::class, 'mock_tests_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
+
 }

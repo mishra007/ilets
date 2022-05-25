@@ -14,7 +14,7 @@ class MockTest extends Model
     ];
 
     public function getDescAttribute(){
-        return strip_tags($this->description);
+        return strtolower(strip_tags($this->description));
     }
 
 }

@@ -21,7 +21,7 @@ class ResultController extends Controller
 		
 
 
-		$mockresults = MockResults::with('mock');
+		$mockresults = MockResults::with(['mock', 'user']);
 			
 		if(auth()->user()->role=='user'){
 			$mockresults = $mockresults->whereUsersId(auth()->user()->id);
@@ -34,16 +34,20 @@ class ResultController extends Controller
 
 
 	//
-	public function show(Request $request, MockResults $mock){
+	public function show(Request $request){
+
+		$mockresults = MockResults::where('id', $request->mock)->with(['mock', 'user'])->first();
+
+		if(!$mockresults){
+			abort(404);
+		}
 		//...
-		if(auth()->user()->role=='user' && $mock->users_id !== auth()->user()->id){
+		if(auth()->user()->role=='user' && $mockresults->users_id !== auth()->user()->id){
 			abort(404);
 		}
 
-		$mockTest = $mock->mock;
-
 		//dd($mock);
-		return Inertia::render('Result/Show', ['mockData'=>$mock, 'mockTest'=>$mockTest]);
+		return Inertia::render('Result/Show', ['mockData'=>$mockresults]);
 	}
 
 
