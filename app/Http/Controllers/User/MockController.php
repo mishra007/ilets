@@ -73,6 +73,8 @@ class MockController extends Controller
 		//...
 		$store->users_id = auth()->user()->id;
 		$store->mock_tests_id = $request->mock_id;
+		$store->timer = $request->timer;
+		$store->pause_count = $request->pause_count;
 		$store->save();
 
 

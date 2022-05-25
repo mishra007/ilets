@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Authenticated from '@/Layouts/Authenticated';
 import Button from '@/Components/Button';
+import Timer from '@/Components/Timer';
 import { Head, Link } from '@inertiajs/inertia-react';
 import ReactDiffViewer from 'react-diff-viewer';
 import stringSimilarity from 'string-similarity';
@@ -9,12 +10,15 @@ import stringSimilarity from 'string-similarity';
 //const client = new speech.SpeechClient();
 
 export default function Index(props) {
-	const { mockData, mockTest } = props;
+	const { mockData, auth } = props;
 
 	let newValue = mockData?.audio_to_text;
-    let oldValue = mockTest?.desc;
+    let oldValue = mockData?.mock?.desc;
 
-    let rating = stringSimilarity.compareTwoStrings(oldValue, newValue);
+    let rating = 0;
+    if(newValue && oldValue){
+        rating = stringSimilarity.compareTwoStrings(oldValue, newValue);
+    }
 
     return (
         <Authenticated
@@ -42,7 +46,26 @@ export default function Index(props) {
 
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
 
-                        <h3>Overall Rating: {(rating*100).toFixed()}%</h3>
+                        <h2>{mockData?.mock?.title}</h2>
+                        {auth?.user?.role=='admin' &&
+                        <div>
+                            <h3>Student Name: {mockData?.user?.name}</h3>
+                            <h3>Student Email: {mockData?.user?.email}</h3>
+                        </div>
+                        }
+                        
+                        {rating>0 &&
+                            <h3>Overall Rating: {(rating*100).toFixed()}%</h3>
+                        }
+                        {(mockData?.pause_count>0) &&
+                            <h3>Total Pause: {mockData?.pause_count}</h3>
+                        }
+                        {mockData?.timer &&
+                            <h3>Time: <Timer time={mockData?.timer} /> { mockData?.timer >= 60000 ? 'Minutes' : 'Seconds'}</h3>
+                        }
+                        <br />
+                        <br />
+
 
                         {(oldValue && newValue) &&
                             <ReactDiffViewer oldValue={oldValue} newValue={newValue} splitView={true} />

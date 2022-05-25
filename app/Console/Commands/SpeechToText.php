@@ -109,7 +109,8 @@ class SpeechToText extends Command
             }
 
             //...
-            $mockResult->status = 'progress';
+            //$mockResult->status = 'progress';
+            $mockResult->status = 'completed';
             $mockResult->audio_to_text = $allText;
             $mockResult->save();
 

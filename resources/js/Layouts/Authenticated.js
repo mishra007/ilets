@@ -26,9 +26,14 @@ export default function Authenticated({ auth, header, children }) {
                                 </NavLink>
 
                                 {auth.user.role==='admin' &&
+                                <>
                                     <NavLink href={route('mock.index')} active={route().current('mock.index')}>
                                         Mock Test
                                     </NavLink>
+                                    <NavLink href={route('students.index')} active={route().current('students.index')}>
+                                        Students
+                                    </NavLink>
+                                </>
                                 }
 
 
