@@ -40,11 +40,6 @@ class SpeechToText extends Command
         $mockResults = MockResults::where('audio_gcs', '!=', null)->whereStatus('pending')->get();
 
         foreach($mockResults as $result){
-            //set_time_limit(0);
-            set_max_execution_time(1800);
-            //$result->status = 'progress';
-            //$mockResult->audio_to_text = $allText;
-            //$result->save();
             $this->toText($result);
         }
 		
@@ -107,12 +102,12 @@ class SpeechToText extends Command
                 //printf('Transcript: %s' . PHP_EOL, $transcript);
                 //printf('Confidence: %s' . PHP_EOL, $confidence);
             }
-
             //...
-            //$mockResult->status = 'progress';
-            $mockResult->status = 'completed';
-            $mockResult->audio_to_text = $allText;
-            $mockResult->save();
+            if($allText){
+                $mockResult->status = 'completed';
+                $mockResult->audio_to_text = $allText;
+                $mockResult->save();
+            }
 
         } else {
             print_r($operation->getError());

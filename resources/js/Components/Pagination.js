@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/inertia-react';
 export default function Pagination({ data }) {
     return (
         <>
-        {data?.links.length>0 &&
+        {data?.length>0 &&
 	        <div className="mt-4">
 				<nav>
 					{data.links.map((link, key) => {
