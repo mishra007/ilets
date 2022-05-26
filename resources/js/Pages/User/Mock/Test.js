@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Authenticated from '@/Layouts/Authenticated';
 import Button from '@/Components/Button';
 import Timer from '@/Components/Timer';
@@ -16,6 +16,10 @@ export default function Index(props) {
 	const [isTimerPaused, setIsTimerPaused] = useState(true);
 	const [timer, setTimer] = useState(0);
 	const [modalShow, setModalShow] = useState(false);
+	const [blobAudio, setBlobAudio] = useState('');
+
+
+
 
 
 	React.useEffect(() => {
@@ -40,6 +44,13 @@ export default function Index(props) {
     	video: false,
     	audio: true,
 		type: "audio/mpeg",
+		onStop: (blobUrl, blob) => {
+
+			getAudio(blob);
+
+		}
+
+
 		/*onStop: (blobUrl, blob) => {
 			setIsTimerPaused(true);
 
@@ -60,6 +71,15 @@ export default function Index(props) {
 
     });
 
+
+    useEffect(() => {
+
+    	if(status=='stopped' && blobAudio?.size>0){
+			swalAction(timer, pauseCount, blobAudio)
+		}
+		
+	}, [timer, blobAudio, status]);
+
     function startRec(){
     	setIsTimerActive(true);
     	setIsTimerPaused(false);
@@ -77,13 +97,15 @@ export default function Index(props) {
 
     function stopRec(){
     	setIsTimerPaused(true);
-    	stopRecording();
-    	//setModalShow(true);
-    	swalAction();
+    	stopRecording(timer);
     }
 
 
-    function swalAction(){
+    function getAudio(audioBlob){
+    	setBlobAudio(audioBlob);
+    }
+
+    function swalAction(timer, pauseCount, blobAudio){
 
 		Swal.fire({
 			title: 'Are you sure?',
@@ -95,20 +117,21 @@ export default function Index(props) {
 			confirmButtonText: 'Yes, send it!'
 		}).then((result) => {
 			if (result.isConfirmed) {
+
+				const audiofile = new File([blobAudio], "audiofile.mpeg", { type: "audio/mpeg" })
 				
-
-				const audiofile = new File([mediaBlobUrl], "audiofile.mpeg", { type: "audio/mpeg" })
-
 				const formData = new FormData();
 				formData.append("mock_audio", audiofile);
 				formData.append("mock_id", mocktest.id);
 				formData.append("timer", timer);
 				formData.append("pause_count", pauseCount);
 
-				//console.log(audiofile)
+				//console.log(formData)
 				Inertia.post(route('mock.test.submit'), formData).then((res) => {					
 					
 				})
+
+				
 			}
 		})
 	}

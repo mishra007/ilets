@@ -36,7 +36,8 @@ Route::get('/info', function() {
 });
 
 Route::get('/cron', function () {
-	\Artisan::call('queue:work --queue=SpeechToText --timeout=2000');
+	//\Artisan::call('queue:work --queue=SpeechToText --timeout=2000');
+	\Artisan::call('to:text');
 })->name('cron');
 
 

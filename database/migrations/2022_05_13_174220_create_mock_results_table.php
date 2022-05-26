@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('mock_results', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
 
             $table->bigInteger('users_id')->unsigned();

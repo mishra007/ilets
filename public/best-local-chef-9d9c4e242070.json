@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "best-local-chef",
+  "private_key_id": "9d9c4e242070ac2f439e2d548616685fd80b7685",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDaSDrGZ8bfay75\n+bDcYZI2tWo4XLUmJlLQcsYN5MvuiGr6vT3aEO2MFvcJmI3gPYG4nHRlO6S/o8Nv\ndFqErnMY5q7jdWSRCPP1d79gf+zv2ReaNxWsl8AFK8lckL69p/lJ3md07IOrLwRl\npUMFaR9YpUDdUA/na1t89/4FvLBihiy0HqxQLT6aWEcaNUs4i0z05UpbYt0m2eMC\n//9UxjfGkZ6n25bSVL0/Q01FLkS7Sjrq2O7znVQcXRnZPnl0HpINbsgUBwz/n9Yo\nUVlE7khWMGCIBy6HMSDFDc5Rigppe89Q31QZyKq+93j0R6fJ1v/qevPn3Fnj9m9V\nCAO+pU0PAgMBAAECggEAUGRzySjldNmb9pMAkVoaKK4ODe4PBZrtuznaObm/Zf22\nMNzLz+mWI5c9qroV3rWodh6hO7uIxNACpaTbxaweVdh4JuvQex4qA4jz4g2bbQau\ni6yn/eXx4bWrtrzUkzMvPAZ+YfDN2Zk6bFk+YtrBobtTNW9MPDYs/syzMNe6ur3z\nfa9G/gC8ddK04JVzUociRx4SHDryIr5S7jcU53Wbyfna5YbdIZhfbQpYhiBywZxb\nLNdPW2qiDQZViw5X10H2OUyB/Kq22p4qDevKs+LmvxR7gKB4ansl0Y8etmr2eBqv\n9hrT2nfL97VkrqQR/MMEv/5LQVs0CW4NihPWqsvaMQKBgQD7Fl0CV1T7apHeULAN\nJxuzw3HLFnBxmlOy+r1OfPFnQTVv49x1UZCz/q5ps/LV4gugeEvaqogGWolcw5No\ndFhkresUZOv6/syIEpNpAi6sw3pptmz2r7Lxfy+GvEo68ztEQmCmtsJ18WdozZcb\nU1cm4vZWBIkxJ0xPBpYcVvP1CQKBgQDejY2EXtCfAi1zdDDUTdf0QTKTHDVPHgDk\nsPYdAls+mH9PvyGFATjHC2I6ZQawo0TPZtjuoEQCFgkfsjyt0Jxc4ArU260EAp4e\naNT6oFdSU9BmJmt8sn4mUFkIMfKT6x6MxDOAZHsiV8yT1h4XuRsVjDtjsiZlqZVL\nzP5B6TWPVwKBgQDyE4iOpkZPs1p5XY+uzqK9uNQwOi0kyeaia24yivFvXIY5nxVA\nougBMa1USeL45NvS1chERR+qCIXgwsqO7YT/ZFJ+MiL1tczZ8BbhKfJ4LGsMGo6J\nc7HxdW8L1uM2XKUqVVi7wv5PGfRaLcTe2oXu/ukC25Ktqja/BhmZrxe7iQKBgEHM\nN/razXM1gZqQz571JNPiMsGrpVcu17TFXP5WpANtsrYxHAfmxJKUmwYIuGGg48ct\n8RUb7P9w5GGqoKYC9ze+RXWJPS3iWD1FYTJ4FVkRzptk4IKNgx5wwuHZYo65BN85\nYsCi9ITC0Ikk1ODOqWNFgomHMjL8YFd40/NIr70hAoGBANhVlnplixNoPriVUicQ\nVaBwOj9I7Y6wJNV92EYnYF4wpt8f3zu3DPwW9YZ3k7550YQi519N8pi4FVN/UsW1\nI6OATF908QmcDSZIjrHTSSPZXPph7VjzZrG+YyMJnSbiFAtead7/pFQRL1ATCS64\nA0KA2sdDt8HqyApCt/qlqVry\n-----END PRIVATE KEY-----\n",
+  "client_email": "ilets-cloud-store@best-local-chef.iam.gserviceaccount.com",
+  "client_id": "112671315386589349519",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ilets-cloud-store%40best-local-chef.iam.gserviceaccount.com"
+}
